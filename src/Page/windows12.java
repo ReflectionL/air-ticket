@@ -28,7 +28,7 @@ public class windows12 extends JFrame{
 
 
     public windows12() {
-        //this.setVisible(true);
+        this.setVisible(true);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200, 200, 800, 600);

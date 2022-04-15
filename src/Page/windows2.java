@@ -14,7 +14,7 @@ public class windows2 extends JFrame {
         windows2 windows2 = new windows2();
     }
     public windows2(){
-        //this.setVisible(true);
+        this.setVisible(true);
         this.setSize(1200,800);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
