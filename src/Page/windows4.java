@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class windows4 extends JFrame{
     ButtonGroup group = new ButtonGroup();
@@ -87,8 +88,13 @@ public class windows4 extends JFrame{
             this.add(jLabel4);
             this.add(jLabel5);
             this.add(jLabel6);
-            int i;
-            for(i = 0; i < 24; i ++) {
+
+
+            List<String> listSeat = ReadTXT.querySeat(ReadTXT.ticket);
+            System.out.println(listSeat);
+
+
+            for(int i = 0; i < 24; i ++) {
                 switch(i % 4) {
                     case 0:
                         button.add(new JRadioButton((31 + i) + "A"));

@@ -138,6 +138,7 @@ public class windows12 extends JFrame{
                 public void actionPerformed(ActionEvent e) {
                     ReadTXT.ticket = ticket;
                     AirportSystem.toPage(2);
+                    AirportSystem.refreshPage();
                 }
             });
         }

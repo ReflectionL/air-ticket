@@ -51,21 +51,17 @@ public class ReadTXT {
         // System.out.println(querylistair.get(1).getBookID());
 
     }
-    public static void querySeat(AirTicket air){
-        if (listseat.size()!=0)
-        {
-            listseat.clear();
-        }
-
+    public static List<String> querySeat(AirTicket air){
+        List<String> listseat=new ArrayList<String>();
         for(int i=0;i<listAir.size();i++)
         {
             if(listAir.get(i).getFlightno().equals(air.getFlightno()))
             {
-
                 listseat.add(listAir.get(i).getSeat());
-
             }
         }
+        System.out.println("this is: " + listseat);
+        return listseat;
     }
     public static String readFile(){
          try {
