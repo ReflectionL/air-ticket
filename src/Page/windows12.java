@@ -15,10 +15,17 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
 public class windows12 extends JFrame{
+    private int ticketFlag = 0;
+    private int luggageFlag = 0;
+    private JLabel lblNewLabel3 = new JLabel("------------------------------------------------------------------------------------");
+    private JLabel jLabel4 = new JLabel("The ticket you want to print：");
+    private JLabel jLabel5 = new JLabel();
+    private JLabel jLabel6 = new JLabel();
+    private JPanel contentPane;
     public static void main(String[] args){
         new windows12();
     }
-    private JPanel contentPane;
+
 
     public windows12() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,6 +63,37 @@ public class windows12 extends JFrame{
 
                 this.add(jCheckBox1);
                 this.add(jCheckBox2);
+
+                jCheckBox1.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if(jCheckBox1.isSelected()) {
+                            ticketFlag++;
+                            jLabel5.setText("There are " + ticketFlag + " tickets.");
+                            jLabel5.setVisible(true);
+                        }
+                        else {
+                            ticketFlag--;
+                            jLabel5.setText("There are " + ticketFlag + " tickets.");
+                            if(ticketFlag == 0)
+                                jLabel5.setVisible(false);
+                        }
+                    }
+                });
+                jCheckBox2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if(jCheckBox2.isSelected()) {
+                            luggageFlag++;
+                            jLabel6.setText("There are " + luggageFlag + " luggage tickets.");
+                            jLabel6.setVisible(true);
+                        }
+                        else {
+                            luggageFlag--;
+                            jLabel6.setText("There are " + luggageFlag + " luggage tickets.");
+                            if(luggageFlag == 0)
+                                jLabel6.setVisible(false);
+                        }
+                    }
+                });
             }
             SimpleDateFormat format = new SimpleDateFormat("HH:mm MM-dd");
             JButton jButton1 = new JButton("Detail information");
@@ -102,19 +140,24 @@ public class windows12 extends JFrame{
             });
         }
 
-        JLabel lblNewLabel3 = new JLabel("------------------------------------------------------------------------------------");
         lblNewLabel3.setBounds(0,360,10000,200);
         lblNewLabel3.setFont(new Font("微软雅黑", Font.BOLD, 40));
         add(lblNewLabel3);
 
-        JLabel jLabel4 = new JLabel("The ticket you want to print：");
         jLabel4.setBounds(40,400,500,200);
         jLabel4.setFont(new Font("微软雅黑", Font.BOLD, 30));
         this.add(jLabel4);
-        JLabel jLabel5 = new JLabel("<html>"+"There are 1 tickets. "+"<br>"+"There are 1 luggage tickets."+"<html>");
+
         jLabel5.setBounds(350,480,500,200);
         jLabel5.setFont(new Font("微软雅黑", Font.BOLD, 30));
+        jLabel5.setVisible(false);
         this.add(jLabel5);
+
+        jLabel6.setBounds(350,530,500,200);
+        jLabel6.setFont(new Font("微软雅黑", Font.BOLD, 30));
+        jLabel5.setVisible(false);
+        this.add(jLabel6);
+
 
         JButton jButton5 = new JButton("Print");
         jButton5.setBounds(700,650,160,70);

@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSON;
 
 public class ReadTXT {
     public static List<AirTicket> listAir = new ArrayList<AirTicket>();
-    public static AirTicket ticket;
+    public static AirTicket ticket = new AirTicket();
     public static TemBook temBook;
     public static List<AirTicket> tickets = new ArrayList<AirTicket>();
     public static void queryBookid(String bookid){

@@ -13,7 +13,8 @@ import java.util.ArrayList;
  */
 public class AirportSystem {
     public static ArrayList<JFrame> frame = new ArrayList<JFrame>();
-    public static windows12 win12=new windows12();
+    public static windows2 win2 = new windows2();
+    public static windows12 win12 = new windows12();
     public static void main(String[] args) {
         frame.add(new windows1());
         frame.add(new windows2());
@@ -27,7 +28,6 @@ public class AirportSystem {
         frame.add(new windows10());
         frame.add(new windows11());
         frame.add(new windows12());
-        //frame.add(new windows13());
         toPage(1);
     }
 
@@ -38,11 +38,17 @@ public class AirportSystem {
                 if(i == 11){
                     win12.setVisible(false);
                 }
+                else if(i == 1){
+                    win2.setVisible(false);
+                }
                 frame.get(i).setVisible(false);
             }
             else {
                 if(num == 11){
                     win12 = new windows12();
+                }
+                else if(num == 1){
+                    win2 = new windows2();
                 }
                 else{
                     frame.get(i).setVisible(true);
