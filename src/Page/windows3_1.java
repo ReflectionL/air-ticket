@@ -34,6 +34,7 @@ public class windows3_1 extends JFrame {
      * Create the frame.
      */
     public windows3_1() {
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200, 800);
         this.setLocationRelativeTo(null);

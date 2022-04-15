@@ -16,6 +16,8 @@ public class windows11 extends JFrame implements Runnable, ActionListener {
     private JLabel timeLabel3;
 
     public windows11() {
+        //this.setVisible(true);
+
         int hour = 0;
         int minute = 0;
         int second = 30;
@@ -57,7 +59,7 @@ public class windows11 extends JFrame implements Runnable, ActionListener {
         double height = tool.getScreenSize().getHeight();
         this.setLocation((int)((width-this.getWidth())/2)
                 ,(int)((height-this.getHeight())/2));
-        //this.setVisible(true);
+
 
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

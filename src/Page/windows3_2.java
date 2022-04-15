@@ -48,7 +48,7 @@ public class windows3_2 extends JPanel {
                 String bookID = jt1.getText().toString();
                 ReadTXT.queryBookid(bookID);
 
-                if(ReadTXT.ticket != null) {
+                if(ReadTXT.ticket.getID() != null) {
                     ReadTXT.tickets.add(ReadTXT.ticket);
                     AirportSystem.toPage(12);
                 }

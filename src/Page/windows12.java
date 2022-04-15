@@ -28,6 +28,8 @@ public class windows12 extends JFrame{
 
 
     public windows12() {
+        //this.setVisible(true);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200, 200, 800, 600);
         contentPane = new JPanel();
@@ -38,7 +40,7 @@ public class windows12 extends JFrame{
         contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-        this.setVisible(true);
+
 
         JLabel jLabel1 = new JLabel("Ticket information");
         jLabel1.setBounds(400,-40,800,200);

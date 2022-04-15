@@ -21,6 +21,7 @@ public class windows7 extends JFrame implements Runnable, ActionListener {
         int minute = 0;
         int second = 30;
 
+        //this.setVisible(true);
         this.setTime(hour, minute, second);
         this.setLayout(null);
         this.setSize(1200,800);
@@ -28,7 +29,7 @@ public class windows7 extends JFrame implements Runnable, ActionListener {
         timeLabel.setFont(new Font(Font.SERIF, Font.BOLD, 25));
         timeLabel.setBounds(260,40,1000,200);
         timeLabel.setFont(new Font("微软雅黑", Font.BOLD, 25));
-        //this.setVisible(true);
+
         this.setSize(1200, 800);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
