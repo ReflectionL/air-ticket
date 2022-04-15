@@ -30,7 +30,6 @@ public class AirportSystem {
         frame.add(new windows12());
         toPage(1);
     }
-
     public static void toPage(int num) {
         num--;
         for(int i = 0; i < frame.size(); i++) {
@@ -55,5 +54,8 @@ public class AirportSystem {
                 }
             }
         }
+    }
+    public static void refreshPage() {
+        frame.set(3, new windows4());
     }
 }

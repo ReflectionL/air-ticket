@@ -226,6 +226,7 @@ public class windows4 extends JFrame{
             jButton1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     AirportSystem.toPage(2);
+                    AirportSystem.refreshPage();
                 }
             });
 

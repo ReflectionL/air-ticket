@@ -65,6 +65,7 @@ public class windows9 extends JFrame {
                 ReadTXT.ticket.setSeat(ReadTXT.temBook.getSeat());
                 ReadTXT.writeFile(ReadTXT.ticket);
                 AirportSystem.toPage(10);
+                AirportSystem.refreshPage();
             }
         });
     }

@@ -15,6 +15,7 @@ public class ReadTXT {
     public static AirTicket ticket = new AirTicket();
     public static TemBook temBook;
     public static List<AirTicket> tickets = new ArrayList<AirTicket>();
+    static List<String> listseat=new ArrayList<String>();
     public static void queryBookid(String bookid){
         String json=readFile();
         listAir =JSON.parseArray(json,AirTicket.class);
@@ -49,6 +50,22 @@ public class ReadTXT {
         // System.out.println(querylistair.get(0).getBookID());
         // System.out.println(querylistair.get(1).getBookID());
 
+    }
+    public static void querySeat(AirTicket air){
+        if (listseat.size()!=0)
+        {
+            listseat.clear();
+        }
+
+        for(int i=0;i<listAir.size();i++)
+        {
+            if(listAir.get(i).getFlightno().equals(air.getFlightno()))
+            {
+
+                listseat.add(listAir.get(i).getSeat());
+
+            }
+        }
     }
     public static String readFile(){
          try {
