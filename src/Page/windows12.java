@@ -22,25 +22,17 @@ public class windows12 extends JFrame{
     private JLabel jLabel5 = new JLabel();
     private JLabel jLabel6 = new JLabel();
     private JPanel contentPane;
+
     public static void main(String[] args){
         new windows12();
     }
 
-
     public windows12() {
-        this.setVisible(true);
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(200, 200, 800, 600);
         contentPane = new JPanel();
 
-        this.setLocationRelativeTo(null);
-        this.setSize(1200, 800);
-        this.setResizable(false);
         contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
-        setContentPane(contentPane);
+        this.setContentPane(contentPane);
         contentPane.setLayout(null);
-
 
         JLabel jLabel1 = new JLabel("Ticket information");
         jLabel1.setBounds(400,-40,800,200);
@@ -70,30 +62,28 @@ public class windows12 extends JFrame{
                     public void actionPerformed(ActionEvent e) {
                         if(jCheckBox1.isSelected()) {
                             ticketFlag++;
-                            jLabel5.setText("There are " + ticketFlag + " tickets.");
                             jLabel5.setVisible(true);
                         }
                         else {
                             ticketFlag--;
-                            jLabel5.setText("There are " + ticketFlag + " tickets.");
                             if(ticketFlag == 0)
                                 jLabel5.setVisible(false);
                         }
+                        jLabel5.setText("There are " + ticketFlag + " tickets.");
                     }
                 });
                 jCheckBox2.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         if(jCheckBox2.isSelected()) {
                             luggageFlag++;
-                            jLabel6.setText("There are " + luggageFlag + " luggage tickets.");
                             jLabel6.setVisible(true);
                         }
                         else {
                             luggageFlag--;
-                            jLabel6.setText("There are " + luggageFlag + " luggage tickets.");
                             if(luggageFlag == 0)
                                 jLabel6.setVisible(false);
                         }
+                        jLabel6.setText("There are " + luggageFlag + " luggage tickets.");
                     }
                 });
             }
@@ -145,7 +135,7 @@ public class windows12 extends JFrame{
 
         lblNewLabel3.setBounds(0,360,10000,200);
         lblNewLabel3.setFont(new Font("微软雅黑", Font.BOLD, 40));
-        add(lblNewLabel3);
+        this.add(lblNewLabel3);
 
         jLabel4.setBounds(40,400,500,200);
         jLabel4.setFont(new Font("微软雅黑", Font.BOLD, 30));
@@ -181,6 +171,11 @@ public class windows12 extends JFrame{
                 AirportSystem.toPage(1);
             }
         });
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setBounds(200, 200, 1200, 800);
+        this.setLocationRelativeTo(null);
+//        this.setVisible(true);
+        this.setResizable(false);
     }
 
 }

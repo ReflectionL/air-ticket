@@ -1,86 +1,98 @@
 package Page;
 
+import data.ReadTXT;
+import logic.AirportSystem;
+
 import java.awt.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class windows3_1 extends JFrame {
 
-    private JPanel contentPane;
-    CardLayout cardLayout=new CardLayout();
 
     /**
      * Launch the application.
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    windows3_1 frame = new windows3_1();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        windows3_1 windows3_1 = new windows3_1();
     }
 
     /**
      * Create the frame.
      */
     public windows3_1() {
+        Container container1 = this.getContentPane();
+        container1.setLayout(null);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1200, 800);
+        JLabel lblNewLabel = new JLabel("Please input your information");
+        lblNewLabel.setBounds(260,-40,1000,200);
+        lblNewLabel.setFont(new Font("微软雅黑", Font.BOLD, 50));
+        add(lblNewLabel);
+
+        JLabel lblNewLabel1 = new JLabel("Name：");
+        lblNewLabel1.setBounds(270,100,1000,200);
+        lblNewLabel1.setFont(new Font("微软雅黑", Font.BOLD, 40));
+        add(lblNewLabel1);
+
+        JTextField jt1 = new JTextField();
+        jt1.setBounds(410, 184, 400, 42);
+        jt1.setFont(new Font("微软雅黑", Font.BOLD, 30));
+        add(jt1);
+        jt1.setColumns(30);
+
+        JLabel lblNewLabel2 = new JLabel("ID：");
+        lblNewLabel2.setBounds(344,180,1000,200);
+        lblNewLabel2.setFont(new Font("微软雅黑", Font.BOLD, 40));
+        add(lblNewLabel2);
+
+
+        JTextField jt2 = new JTextField();
+        jt2.setBounds(410, 264, 400, 42);
+        jt2.setFont(new Font("微软雅黑", Font.BOLD, 30));
+        add(jt2);
+        jt2.setColumns(30);
+
+        JButton btnNewButton1 = new JButton("Inquire");
+        btnNewButton1.setBounds(350, 560, 194, 60);
+        btnNewButton1.setFont(new Font("微软雅黑", Font.BOLD, 30));
+        add(btnNewButton1);
+        JButton btnNewButton2 = new JButton("Back");
+        btnNewButton2.setBounds(580, 560, 194, 60);
+        btnNewButton2.setFont(new Font("微软雅黑", Font.BOLD, 30));
+        add(btnNewButton2);
+
+        btnNewButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = jt1.getText().toString();
+                String ID = jt2.getText().toString();
+                ReadTXT.queryID(ID);
+
+                if(ReadTXT.tickets.size() != 0) {
+                    if(ReadTXT.tickets.get(0).getName().equals(name)) {
+                        AirportSystem.toPage(12);
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "The ticket is not exist.", "Waring", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "The ticket is not exist.", "Waring", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        btnNewButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                AirportSystem.toPage(1);
+            }
+        });
+//        this.setVisible(true);
+        this.setSize(1200,800);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-
-        JPanel panel = new JPanel();
-        panel.setBounds(0, 0, 1200, 800);
-        contentPane.add(panel);
-//		给主要显示面板添加布局方式
-        panel.setLayout(cardLayout);
-//		创建相应面板类的对象
-        windows3_2 p1=new windows3_2();
-//		将面板添加到住面板中，注意:add()方法里有两个参数，第一个是要添加的对象，第二个给这个对象所放置的卡片
-//		起个名字，后面调用显示的时候要用到这个名字
-        panel.add(p1,"p1");
-        windows3_3 p2=new windows3_3();
-        panel.add(p2,"p2");
-
-
-        JButton btnNewButton = new JButton("Booking inquire");
-        btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-//				这里是点击按钮切换不同的页面
-//				cardLayout.show(参数 1，参数2)方法里面也有两个参数，
-//				参数1是表示指明你要在哪个容器上显示，
-//				参数2是指明要显示哪个卡片，即你要给出对应卡片的名字
-                cardLayout.show(panel, "p1");
-            }
-        });
-        btnNewButton.setBounds(120, 360, 250, 46);
-        btnNewButton.setFont(new Font("微软雅黑", Font.BOLD, 25));
-        contentPane.add(btnNewButton);
-
-        JButton btnNewButton_1 = new JButton("ID inquire");
-        btnNewButton_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-//				同上
-                cardLayout.show(panel, "p2");
-            }
-        });
-        btnNewButton_1.setBounds(400, 360, 196, 46);
-        btnNewButton_1.setFont(new Font("微软雅黑", Font.BOLD, 25));
-        contentPane.add(btnNewButton_1);
+        this.setResizable(false);
     }
 }

@@ -14,58 +14,58 @@ public class windows9 extends JFrame {
     }
 
     public windows9() {
-        //this.setVisible(true);
+        Container container1 = this.getContentPane();
+        container1.setLayout(null);
+
+
+        JLabel jLabel1 = new JLabel("Credit card number :");
+        jLabel1.setBounds(250,110,250,100);
+        jLabel1.setFont(new Font("微软雅黑", Font.BOLD, 20));
+
+        JLabel jLabel2 = new JLabel("Password:");
+        jLabel2.setBounds(355,185,200,100);
+        jLabel2.setFont(new Font("微软雅黑", Font.BOLD, 20));
+
+        JLabel jLabel3 = new JLabel("Credit card pay");
+        jLabel3.setBounds(400,-40,800,200);
+        jLabel3.setFont(new Font("微软雅黑", Font.BOLD, 50));
+
+        JTextField jTextField1 = new JTextField();
+        jTextField1.setBounds(500,150,350,30);
+        JPasswordField jTextField2 = new JPasswordField();
+        jTextField2.setBounds(500,225,350,30);
+
+        JButton jButton1 = new JButton("Back");
+        jButton1.setBounds(300,500,250,70);
+        jButton1.setFont(new Font("微软雅黑", Font.BOLD, 25));
+
+        JButton jButton2 = new JButton("Pay");
+        jButton2.setBounds(650,500,250,70);
+        jButton2.setFont(new Font("微软雅黑", Font.BOLD, 25));
+
+//        this.setVisible(true);
         this.setSize(1200, 800);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        Container container1 = this.getContentPane();
-        //this.setResizable(false);
-        container1.setLayout(null);
-
-        JPanel jPanel1 = new JPanel();
-        jPanel1.setBounds(200,160,800,400);
-        jPanel1.setLayout(null);
-        jPanel1.setBorder(BorderFactory.createCompoundBorder());
-
-        JLabel jLabel1 = new JLabel("Credit Card Number:");
-        jLabel1.setBounds(20,0,1000,200);
-        jLabel1.setFont(new Font("微软雅黑", Font.BOLD, 25));
-
-        JLabel jLabel2 = new JLabel("Password:");
-        jLabel2.setBounds(40,80,1000,200);
-        jLabel2.setFont(new Font("微软雅黑", Font.BOLD, 25));
-
-        JLabel jLabel3 = new JLabel("Credit card payment");
-        jLabel3.setBounds(460,-20,1000,200);
-        jLabel3.setFont(new Font("微软雅黑", Font.BOLD, 30));
-
-        JTextField jTextField1 = new JTextField();
-        jTextField1.setBounds(280,80,400,40);
-        jTextField1.setFont(new Font("微软雅黑", Font.BOLD, 25));
-
-
-        JPasswordField jTextField2 = new JPasswordField();
-        jTextField2.setBounds(280,160,400,40);
-        jTextField2.setFont(new Font("微软雅黑", Font.BOLD, 25));
-
-        JButton jButton1 = new JButton("Payment");
-        jButton1.setBounds(300,280,200,40);
-        jButton1.setFont(new Font("微软雅黑", Font.BOLD, 30));
-
-        this.add(jPanel1);
+        this.setResizable(false);
         this.add(jLabel3);
-        jPanel1.add(jLabel1);
-        jLabel1.add(jLabel2);
-        jPanel1.add(jTextField1);
-        jPanel1.add(jTextField2);
-        jPanel1.add(jButton1);
+        this.add(jLabel1);
+        this.add(jLabel2);
+        this.add(jTextField1);
+        this.add(jTextField2);
+        this.add(jButton1);
+        this.add(jButton2);
 
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ReadTXT.ticket.setSeat(ReadTXT.temBook.getSeat());
                 ReadTXT.writeFile(ReadTXT.ticket);
+                AirportSystem.toPage(7);
+            }
+        });
+        jButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 AirportSystem.toPage(10);
-                AirportSystem.refreshPage();
             }
         });
     }

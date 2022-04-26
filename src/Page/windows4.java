@@ -10,24 +10,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class windows4 extends JFrame{
-    ButtonGroup group = new ButtonGroup();
-    private ArrayList<JRadioButton> button = new ArrayList<JRadioButton>();
+    private Map<String,JRadioButton> buttonMap = new HashMap<>();
+    private Map<String,JRadioButton> fbuttonMap = new HashMap<>();
+    private int seatNum = 20;
         public windows4(){
-            //this.setVisible(true);
-            this.setSize(1200,800);
-            this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            this.setLocationRelativeTo(null);
-            this.setResizable(false);
+//            this.setVisible(true);
 
             ReadTXT.temBook = new TemBook();
 
             Container container = this.getContentPane();
             container.setLayout(null);
-            URL resource2 = windows4.class.getResource("/picture/blueSeat.jpg");
+
             URL resource = windows4.class.getResource("/picture/seat.jpg");
+            URL resource2 = windows4.class.getResource("/picture/blueSeat.jpg");
             URL resource3 = windows4.class.getResource("/picture/redSeat.jpg");
 
             Icon icon = new ImageIcon(resource);
@@ -35,8 +35,8 @@ public class windows4 extends JFrame{
             Icon icon7 = new ImageIcon(resource3);
 
             JLabel jLabel1 = new JLabel("Please select your seat");
-            JLabel jLabel2 = new JLabel("You should pay extra: $300");
-            JLabel jLabel3 = new JLabel("Tips:28~30 is the first class    31~33 is the second class");
+            JLabel jLabel2 = new JLabel("You should pay extra : $0");
+            JLabel jLabel3 = new JLabel("Tips:36~37 is the first class    30~35 is the second class");
             JLabel jLabel4 = new JLabel("Has occupied:");
             JLabel jLabel5 = new JLabel("Available: ");
             JLabel jLabel6 = new JLabel("Your choice:");
@@ -77,308 +77,134 @@ public class windows4 extends JFrame{
             jLabel6.setBounds(740,80,100,100);
             jLabel6.setFont(new Font("微软雅黑", Font.BOLD, 15));
 
-            this.add(label1);
-            this.add(label2);
-            this.add(label3);
-            this.add(jButton1);
-            this.add(jButton2);
-            this.add(jLabel1);
-            this.add(jLabel2);
-            this.add(jLabel3);
-            this.add(jLabel4);
-            this.add(jLabel5);
-            this.add(jLabel6);
 
-
-            List<String> listSeat = ReadTXT.querySeat(ReadTXT.ticket);
-            System.out.println(listSeat);
-
-
-            for(int i = 0; i < 24; i ++) {
+            for(int i = 0; i < seatNum; i ++) {
+                int num = i / 4 + 30;
+                JRadioButton Jb;
                 switch(i % 4) {
                     case 0:
-                        button.add(new JRadioButton((31 + i) + "A"));
-                        button.get(i).setBounds(250,200 + 50 * (int)Math.floor((i + 1) / 4),70,25);
+                        Jb = new JRadioButton(num + "A");
+                        Jb.setBounds(250,300 + 50 * (int)Math.floor((i + 1) / 4),70,25);
+                        buttonMap.put(num + "A",Jb);
                         break;
 
                     case 1:
-                        button.add(new JRadioButton((31 + i) + "B"));
-                        button.get(i).setBounds(350,200 + 50 * (int)Math.floor((i + 1) / 4),70,25);
+                        Jb = new JRadioButton(num + "B");
+                        Jb.setBounds(350,300 + 50 * (int)Math.floor((i + 1) / 4),70,25);
+                        buttonMap.put(num + "B",Jb);
                         break;
 
                     case 2:
-                        button.add(new JRadioButton((31 + i) + "C"));
-                        button.get(i).setBounds(650,200 + 50 * (int)Math.floor((i + 1) / 4),70,25);
+                        Jb = new JRadioButton(num + "C");
+                        Jb.setBounds(650,300 + 50 * (int)Math.floor((i + 1) / 4),70,25);
+                        buttonMap.put(num + "C",Jb);
                         break;
 
                     case 3:
-                        button.add(new JRadioButton((31 + i) + "D"));
-                        button.get(i).setBounds(750,200 + 50 * ((int)Math.floor((i + 1) / 4) - 1),70,25);
+                        Jb = new JRadioButton(num + "D");
+                        Jb.setBounds(750,300 + 50 * ((int)Math.floor((i + 1) / 4) - 1),70,25);
+                        buttonMap.put(num + "D",Jb);
                         break;
                 }
             }
 
-            for (JRadioButton b: button) {
-                b.setIcon(icon);
-                group.add(b);
-                container.add(b);
-                b.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        for (JRadioButton bb: button) {
-                            bb.setIcon(icon);
-                        }
-                        if(b.isSelected()){
-                            b.setIcon(icon2);
-                            ReadTXT.temBook.setSeat(b.getText());
-                        }
+            for(int i = 0; i < 4; i ++) {
+                int num = i / 2 + 36;
+                JRadioButton Jb;
+                switch(i % 2) {
+                    case 0:
+                        Jb = new JRadioButton(num + "A");
+                        Jb.setBounds(300,200 + 50 * (int)Math.floor((i + 1) / 2),70,25);
+                        fbuttonMap.put(num + "A",Jb);
+                        break;
 
+                    case 1:
+                        Jb = new JRadioButton(num + "B");
+                        Jb.setBounds(700,200 + 50 * ((int)Math.floor((i + 1) / 2) - 1),70,25);
+                        fbuttonMap.put(num + "B",Jb);
+                        break;
+                }
+            }
+
+            List<String> listSeat = ReadTXT.querySeat(ReadTXT.ticket);
+
+            for (String i : listSeat){
+                if (buttonMap.containsKey(i)){
+                    JRadioButton Jb = buttonMap.get(i);
+                    Jb.setIcon(icon7);
+                    Jb.setSelected(false);
+                    container.add(Jb);
+                    buttonMap.remove(i);
+                }
+                else if (fbuttonMap.containsKey(i)){
+                    JRadioButton Jb = fbuttonMap.get(i);
+                    Jb.setIcon(icon7);
+                    Jb.setSelected(false);
+                    container.add(Jb);
+                    fbuttonMap.remove(i);
+                }
+            }
+
+            for (Map.Entry<String,JRadioButton> map : buttonMap.entrySet()) {
+                JRadioButton Jb = map.getValue();
+                Jb.setIcon(icon);
+                container.add(Jb);
+            }
+
+            for (Map.Entry<String,JRadioButton> map : fbuttonMap.entrySet()) {
+                JRadioButton Jb = map.getValue();
+                Jb.setIcon(icon);
+                container.add(Jb);
+            }
+
+            for (Map.Entry<String,JRadioButton> map : buttonMap.entrySet()) {
+                JRadioButton Jb = map.getValue();
+                Jb.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        jLabel2.setText("You should pay extra : $0");
+                        for (Map.Entry<String,JRadioButton> m : fbuttonMap.entrySet()) {
+                            m.getValue().setIcon(icon);
+                            jButton2.setVisible(false);
+                        }
+                        for (Map.Entry<String,JRadioButton> m : buttonMap.entrySet()) {
+                            m.getValue().setIcon(icon);
+                            jButton2.setVisible(false);
+                        }
+                        if(Jb.isSelected()){
+                            Jb.setIcon(icon2);
+                            ReadTXT.temBook.setSeat(Jb.getText());
+                            ReadTXT.temBook.setSeatPrice(0);
+                            jButton2.setVisible(true);
+                            jLabel2.setText("You should pay extra : $0");
+                        }
                     }
                 });
             }
 
-//            JRadioButton radioButton1 = new JRadioButton("31A");
-//            JRadioButton radioButton2 = new JRadioButton("31B");
-//            JRadioButton radioButton3 = new JRadioButton("31C");
-//            JRadioButton radioButton4 = new JRadioButton("31D");
-//            JRadioButton radioButton5 = new JRadioButton("32A");
-//            JRadioButton radioButton6 = new JRadioButton("32B");
-//            JRadioButton radioButton7 = new JRadioButton("32C");
-//            JRadioButton radioButton8 = new JRadioButton("32D");
-//            JRadioButton radioButton9 = new JRadioButton("33A");
-//            JRadioButton radioButton10 = new JRadioButton("33B");
-//            JRadioButton radioButton11 = new JRadioButton("33C");
-//            JRadioButton radioButton12 = new JRadioButton("33D");
-//            JRadioButton radioButton13 = new JRadioButton("28A");
-//            JRadioButton radioButton14 = new JRadioButton("28B");
-//            JRadioButton radioButton15 = new JRadioButton("28C");
-//            JRadioButton radioButton16 = new JRadioButton("28D");
-//            JRadioButton radioButton17 = new JRadioButton("29A");
-//            JRadioButton radioButton18 = new JRadioButton("29B");
-//            JRadioButton radioButton19 = new JRadioButton("29C");
-//            JRadioButton radioButton20 = new JRadioButton("29D");
-//            JRadioButton radioButton21 = new JRadioButton("30A");
-//            JRadioButton radioButton22 = new JRadioButton("30B");
-//            JRadioButton radioButton23 = new JRadioButton("30C");
-//            JRadioButton radioButton24 = new JRadioButton("30D");
+            for (Map.Entry<String,JRadioButton> map : fbuttonMap.entrySet()) {
+                JRadioButton Jb = map.getValue();
+                Jb.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        jLabel2.setText("You should pay extra : $0");
+                        for (Map.Entry<String,JRadioButton> m : fbuttonMap.entrySet()) {
+                            m.getValue().setIcon(icon);
+                            jButton2.setVisible(false);
+                        }
+                        for (Map.Entry<String,JRadioButton> m : buttonMap.entrySet()) {
+                            m.getValue().setIcon(icon);
+                            jButton2.setVisible(false);
+                        }
+                        if(Jb.isSelected()){
+                            Jb.setIcon(icon2);
+                            ReadTXT.temBook.setSeat(Jb.getText());
+                            jButton2.setVisible(true);
+                            ReadTXT.temBook.setSeatPrice(300);
+                            jLabel2.setText("You should pay extra : $300");
+                        }
+                    }
+                });
+            }
 
-//            radioButton1.setIcon(icon);
-//            radioButton2.setIcon(icon);
-//            radioButton3.setIcon(icon);
-//            radioButton4.setIcon(icon);
-//            radioButton5.setIcon(icon);
-//            radioButton6.setIcon(icon);
-//            radioButton7.setIcon(icon);
-//            radioButton8.setIcon(icon);
-//            radioButton9.setIcon(icon);
-//            radioButton10.setIcon(icon);
-//            radioButton11.setIcon(icon);
-//            radioButton12.setIcon(icon);
-//            radioButton13.setIcon(icon);
-//            radioButton14.setIcon(icon);
-//            radioButton15.setIcon(icon);
-//            radioButton16.setIcon(icon);
-//            radioButton17.setIcon(icon);
-//            radioButton18.setIcon(icon);
-//            radioButton19.setIcon(icon);
-//            radioButton20.setIcon(icon);
-//            radioButton21.setIcon(icon);
-//            radioButton22.setIcon(icon);
-//            radioButton23.setIcon(icon);
-//            radioButton24.setIcon(icon);
-
-//            radioButton1.setBounds(250,200,70,25);
-//            radioButton2.setBounds(350,200,70,25);
-//            radioButton3.setBounds(650,200,70,25);
-//            radioButton4.setBounds(750,200,70,25);
-//            radioButton5.setBounds(250,250,70,25);
-//            radioButton6.setBounds(350,250,70,25);
-//            radioButton7.setBounds(650,250,70,25);
-//            radioButton8.setBounds(750,250,70,25);
-//            radioButton9.setBounds(250,300,70,25);
-//            radioButton10.setBounds(350,300,70,25);
-//            radioButton11.setBounds(650,300,70,25);
-//            radioButton12.setBounds(750,300,70,25);
-//            radioButton13.setBounds(250,350,70,25);
-//            radioButton14.setBounds(350,350,70,25);
-//            radioButton15.setBounds(650,350,70,25);
-//            radioButton16.setBounds(750,350,70,25);
-//            radioButton17.setBounds(250,400,70,25);
-//            radioButton18.setBounds(350,400,70,25);
-//            radioButton19.setBounds(650,400,70,25);
-//            radioButton20.setBounds(750,400,70,25);
-//            radioButton21.setBounds(250,450,70,25);
-//            radioButton22.setBounds(350,450,70,25);
-//            radioButton23.setBounds(650,450,70,25);
-//            radioButton24.setBounds(750,450,70,25);
-
-
-//            group.add(radioButton1);
-//            group.add(radioButton2);
-//            group.add(radioButton3);
-//            group.add(radioButton4);
-//            group.add(radioButton5);
-//            group.add(radioButton6);
-//            group.add(radioButton7);
-//            group.add(radioButton8);
-//            group.add(radioButton9);
-//            group.add(radioButton10);
-//            group.add(radioButton11);
-//            group.add(radioButton12);
-//            group.add(radioButton13);
-//            group.add(radioButton14);
-//            group.add(radioButton15);
-//            group.add(radioButton16);
-//            group.add(radioButton17);
-//            group.add(radioButton18);
-//            group.add(radioButton19);
-//            group.add(radioButton20);
-//            group.add(radioButton21);
-//            group.add(radioButton22);
-//            group.add(radioButton23);
-//            group.add(radioButton24);
-
-//            container.add(radioButton1);
-//            container.add(radioButton2);
-//            container.add(radioButton3);
-//            container.add(radioButton4);
-//            container.add(radioButton5);
-//            container.add(radioButton6);
-//            container.add(radioButton7);
-//            container.add(radioButton8);
-//            container.add(radioButton9);
-//            container.add(radioButton10);
-//            container.add(radioButton11);
-//            container.add(radioButton12);
-//            container.add(radioButton13);
-//            container.add(radioButton14);
-//            container.add(radioButton15);
-//            container.add(radioButton16);
-//            container.add(radioButton17);
-//            container.add(radioButton18);
-//            container.add(radioButton19);
-//            container.add(radioButton20);
-//            container.add(radioButton21);
-//            container.add(radioButton22);
-//            container.add(radioButton23);
-//            container.add(radioButton24);
-//            radioButton1.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    if(radioButton1.isSelected()){
-//                        radioButton1.setIcon(icon2);
-//                        radioButton2.setIcon(icon);
-//                        radioButton3.setIcon(icon);
-//                        radioButton4.setIcon(icon);
-//                        radioButton5.setIcon(icon);
-//                        radioButton6.setIcon(icon);
-//                        radioButton7.setIcon(icon);
-//
-//                        ReadTXT.temBook.setSeat(radioButton1.getText());
-//                    }
-//
-//                }
-//            });
-//            radioButton2.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    if(radioButton2.isSelected()){
-//                        radioButton2.setIcon(icon2);
-//                        radioButton1.setIcon(icon);
-//                        radioButton3.setIcon(icon);
-//                        radioButton4.setIcon(icon);
-//                        radioButton5.setIcon(icon);
-//                        radioButton6.setIcon(icon);
-//                        radioButton7.setIcon(icon);
-//
-//                        ReadTXT.temBook.setSeat(radioButton2.getText());
-//                    }
-//
-//                }
-//            });
-//            radioButton3.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    if(radioButton3.isSelected()){
-//                        radioButton3.setIcon(icon2);
-//                        radioButton2.setIcon(icon);
-//                        radioButton1.setIcon(icon);
-//                        radioButton4.setIcon(icon);
-//                        radioButton5.setIcon(icon);
-//                        radioButton6.setIcon(icon);
-//                        radioButton7.setIcon(icon);
-//
-//                        ReadTXT.temBook.setSeat(radioButton3.getText());
-//                    }
-//
-//                }
-//            });
-//            radioButton4.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    if(radioButton4.isSelected()){
-//                        radioButton4.setIcon(icon2);
-//                        radioButton2.setIcon(icon);
-//                        radioButton3.setIcon(icon);
-//                        radioButton1.setIcon(icon);
-//                        radioButton5.setIcon(icon);
-//                        radioButton6.setIcon(icon);
-//                        radioButton7.setIcon(icon);
-//
-//                        ReadTXT.temBook.setSeat(radioButton4.getText());
-//                    }
-//
-//                }
-//            });
-//            radioButton5.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    if(radioButton5.isSelected()){
-//                        radioButton5.setIcon(icon2);
-//                        radioButton2.setIcon(icon);
-//                        radioButton3.setIcon(icon);
-//                        radioButton4.setIcon(icon);
-//                        radioButton1.setIcon(icon);
-//                        radioButton6.setIcon(icon);
-//                        radioButton7.setIcon(icon);
-//
-//                        ReadTXT.temBook.setSeat(radioButton5.getText());
-//                    }
-//
-//                }
-//            });
-//            radioButton6.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    if(radioButton6.isSelected()){
-//                        radioButton6.setIcon(icon2);
-//                        radioButton2.setIcon(icon);
-//                        radioButton3.setIcon(icon);
-//                        radioButton4.setIcon(icon);
-//                        radioButton5.setIcon(icon);
-//                        radioButton1.setIcon(icon);
-//                        radioButton7.setIcon(icon);
-//
-//                        ReadTXT.temBook.setSeat(radioButton6.getText());
-//                    }
-//
-//                }
-//            });
-//            radioButton7.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    if(radioButton7.isSelected()){
-//                        radioButton7.setIcon(icon2);
-//                        radioButton2.setIcon(icon);
-//                        radioButton3.setIcon(icon);
-//                        radioButton4.setIcon(icon);
-//                        radioButton5.setIcon(icon);
-//                        radioButton6.setIcon(icon);
-//                        radioButton1.setIcon(icon);
-//                    }
-//
-//                }
-//            });
 
             jButton1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -392,6 +218,22 @@ public class windows4 extends JFrame{
                     AirportSystem.toPage(5);
                 }
             });
+//            jButton2.setVisible(false);
+            this.setSize(1200,800);
+            this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            this.setLocationRelativeTo(null);
+            this.setResizable(false);
+            this.add(label1);
+            this.add(label2);
+            this.add(label3);
+            this.add(jButton1);
+            this.add(jButton2);
+            this.add(jLabel1);
+            this.add(jLabel2);
+            this.add(jLabel3);
+            this.add(jLabel4);
+            this.add(jLabel5);
+            this.add(jLabel6);
         }
         public static void main(String[] args){
             new windows4();

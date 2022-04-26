@@ -22,7 +22,6 @@ public class windows10 extends JFrame implements Runnable, ActionListener{
         int minute = 0;
         int second = 30;
 
-        //this.setVisible(true);
         this.setTime(hour, minute, second);
         this.setLayout(null);
         this.setSize(1200,800);
@@ -53,7 +52,7 @@ public class windows10 extends JFrame implements Runnable, ActionListener{
         double height = tool.getScreenSize().getHeight();
         this.setLocation((int)((width-this.getWidth())/2)
                 ,(int)((height-this.getHeight())/2));
-
+//        this.setVisible(true);
 
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

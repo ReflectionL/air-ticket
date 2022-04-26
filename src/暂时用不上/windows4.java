@@ -13,11 +13,7 @@ import java.net.URL;
 public class windows4 extends JFrame{
         public windows4(){
             //this.setVisible(true);
-            this.setSize(1200,800);
-            this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            this.setLocationRelativeTo(null);
             //this.setResizable(false);
-
             ReadTXT.temBook = new TemBook();
 
             Container container = this.getContentPane();
@@ -39,9 +35,6 @@ public class windows4 extends JFrame{
             jButton1.setFont(new Font("微软雅黑", Font.BOLD, 25));
             jButton2.setFont(new Font("微软雅黑", Font.BOLD, 25));
 
-            this.add(jButton1);
-            this.add(jButton2);
-
             jLabel1.setBounds(340,-40,1000,200);
             jLabel1.setFont(new Font("微软雅黑", Font.BOLD, 35));
             jLabel2.setBounds(330,20,1000,200);
@@ -55,12 +48,6 @@ public class windows4 extends JFrame{
             jLabel6.setBounds(700,460,1000,200);
             jLabel6.setFont(new Font("微软雅黑", Font.BOLD, 25));
 
-            this.add(jLabel1);
-            this.add(jLabel2);
-            this.add(jLabel3);
-            this.add(jLabel4);
-            this.add(jLabel5);
-            this.add(jLabel6);
             JRadioButton radioButton1 = new JRadioButton("31A");
             JRadioButton radioButton2 = new JRadioButton("31B");
             JRadioButton radioButton3 = new JRadioButton("32A");
@@ -68,7 +55,6 @@ public class windows4 extends JFrame{
             JRadioButton radioButton5 = new JRadioButton("33A");
             JRadioButton radioButton6 = new JRadioButton("33B");
             JRadioButton radioButton7 = new JRadioButton("座位7");
-
 
             radioButton1.setIcon(icon);
             radioButton2.setIcon(icon);
@@ -78,7 +64,6 @@ public class windows4 extends JFrame{
             radioButton6.setIcon(icon);
             radioButton7.setIcon(icon);
 
-
             radioButton1.setBounds(200,150,200,50);
             radioButton2.setBounds(800,150,200,50);
             radioButton3.setBounds(200,300,200,50);
@@ -86,7 +71,6 @@ public class windows4 extends JFrame{
             radioButton5.setBounds(200,450,200,50);
             radioButton6.setBounds(800,450,200,50);
             radioButton7.setBounds(200,450,200,50);
-
 
             ButtonGroup group = new ButtonGroup();
             group.add(radioButton1);
@@ -222,19 +206,29 @@ public class windows4 extends JFrame{
 
                 }
             });
-
             jButton1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     AirportSystem.toPage(2);
                     AirportSystem.refreshPage();
                 }
             });
-
             jButton2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     AirportSystem.toPage(5);
                 }
             });
+
+            this.setSize(1200,800);
+            this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            this.setLocationRelativeTo(null);
+            this.add(jButton1);
+            this.add(jButton2);
+            this.add(jLabel1);
+            this.add(jLabel2);
+            this.add(jLabel3);
+            this.add(jLabel4);
+            this.add(jLabel5);
+            this.add(jLabel6);
         }
         public static void main(String[] args){
             new windows4();

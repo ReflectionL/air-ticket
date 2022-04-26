@@ -13,7 +13,7 @@ import com.alibaba.fastjson.JSON;
 public class ReadTXT {
     public static List<AirTicket> listAir = new ArrayList<AirTicket>();
     public static AirTicket ticket = new AirTicket();
-    public static TemBook temBook;
+    public static TemBook temBook = new TemBook();
     public static List<AirTicket> tickets = new ArrayList<AirTicket>();
     static List<String> listseat=new ArrayList<String>();
     public static void queryBookid(String bookid){
@@ -60,7 +60,6 @@ public class ReadTXT {
                 listseat.add(listAir.get(i).getSeat());
             }
         }
-        System.out.println("this is: " + listseat);
         return listseat;
     }
     public static String readFile(){

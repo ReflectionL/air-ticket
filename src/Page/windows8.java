@@ -1,7 +1,12 @@
 package Page;
 
+import data.ReadTXT;
+import logic.AirportSystem;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class windows8 extends JFrame{
     public static void main(String[] args) {
@@ -9,7 +14,7 @@ public class windows8 extends JFrame{
     }
     public windows8()
     {
-        //this.setVisible(true);
+
         //插入图片
         ImageIcon icon1=new ImageIcon("src/picture/payment.jpg" );
         //添加JLabel 放置图片
@@ -36,14 +41,32 @@ public class windows8 extends JFrame{
         label0.setFont(new Font("微软雅黑", Font.BOLD, 50));
         label0.setBounds(400,10,800,200);
 
-        panel.add(label0);
+        JButton jButton1 = new JButton("Back");
+        jButton1.setBounds(300,500,250,70);
+        jButton1.setFont(new Font("微软雅黑", Font.BOLD, 25));
 
+        JButton jButton2 = new JButton("Pay Successfully");
+        jButton2.setBounds(650,500,250,70);
+        jButton2.setFont(new Font("微软雅黑", Font.BOLD, 25));
+
+        panel.add(label0);
+        this.getLayeredPane().add(jButton1,(Integer.MIN_VALUE));
+        this.getLayeredPane().add(jButton2,(Integer.MIN_VALUE));
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                AirportSystem.toPage(7);
+            }
+        });
+        jButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                AirportSystem.toPage(10);
+            }
+        });
         //添加panel，设置大小，可视
         this.add(panel);
         this.setSize(1200, 800);
-
+//        this.setVisible(true);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-
     }
 }
