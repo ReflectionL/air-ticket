@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import com.alibaba.fastjson.JSON;
+import logic.AirportSystem;
 
 public class ReadTXT {
     public static List<AirTicket> listAir = new ArrayList<AirTicket>();
@@ -22,6 +23,8 @@ public class ReadTXT {
         if (tickets.size()!=0)
         {
             tickets.clear();
+            ticket = null;
+            AirportSystem.totalTicket = 0;
         }
         for(int i = 0; i< listAir.size(); i++)
         {

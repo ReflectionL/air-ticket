@@ -1,4 +1,4 @@
-package Page;
+package 暂时用不上;
 
 import logic.AirportSystem;
 
@@ -74,7 +74,7 @@ public class windows11 extends JFrame implements Runnable, ActionListener {
 
     private void setText() {
         this.timeLabel.setText("<html>"+"Printing successful. please take away your ticket"+"<br>"+"<html>");
-        this.timeLabel2.setText("<html>"+"have "+ AirportSystem.totalTicket +" tickets"+"<html>");
+        this.timeLabel2.setText("<html>"+"have"+" n "+"tickets"+"<html>");
         this.timeLabel3.setText("<html>"+"("+(this.hour<10?"0"+this.hour:this.hour)
                 +":"+(this.minute<10?"0"+this.minute:this.minute)
                 +":"+(this.second<10?"0"+this.second:this.second)+")"+"<html>");

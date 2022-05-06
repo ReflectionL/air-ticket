@@ -9,6 +9,8 @@ package data;
  */
 public class TemBook {
     private String seat;
+    private String food;
+    private int insurance;
     private float seatPrice = 0;
     private float foodPrice = 0;
     private float insurancePrice = 0;
@@ -47,5 +49,45 @@ public class TemBook {
 
     public float sumPrice(){
         return seatPrice+foodPrice+insurancePrice;
+    }
+
+    public String getFood() {
+        return food;
+    }
+
+    public void setFood(String food) {
+        this.food = food;
+    }
+
+    public int getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(int insurance) {
+        this.insurance = insurance;
+    }
+
+    public String getRealFood() {
+        if (food == null)
+            return "xixi";
+
+        else if (food.equals("A"))
+            return "No Meal.";
+
+        else if (food.equals("B"))
+            return "Standard Plane Meal(Pasta + Hamburger).";
+
+        else
+            return "Luxurious Plane Meal(Pasta + Hamburger + Coke).";
+    }
+    public String getRealInsurance() {
+        if (insurance == 0)
+            return "No Insurance.";
+
+        else if (insurance == 1)
+            return "Standard Insurance";
+
+        else
+            return "Supreme Insurance.";
     }
 }

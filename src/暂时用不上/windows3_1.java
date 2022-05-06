@@ -1,4 +1,4 @@
-package Page;
+package 暂时用不上;
 
 import data.ReadTXT;
 import logic.AirportSystem;
@@ -10,11 +10,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class windows3_1 extends JFrame {
-    
+
+
+    /**
+     * Launch the application.
+     */
     public static void main(String[] args) {
         windows3_1 windows3_1 = new windows3_1();
     }
 
+    /**
+     * Create the frame.
+     */
     public windows3_1() {
         Container container1 = this.getContentPane();
         container1.setLayout(null);
@@ -65,15 +72,14 @@ public class windows3_1 extends JFrame {
                 if(ReadTXT.tickets.size() != 0) {
                     if(ReadTXT.tickets.get(0).getName().equals(name)) {
                         AirportSystem.toPage(12);
-                        jt1.setText("");
-                        jt2.setText("");
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "The ticket is not exist.", "Warning", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "The ticket is not exist.", "Waring", JOptionPane.ERROR_MESSAGE);
                     }
+
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "The ticket is not exist.", "Warning", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "The ticket is not exist.", "Waring", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

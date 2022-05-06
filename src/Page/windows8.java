@@ -60,6 +60,8 @@ public class windows8 extends JFrame{
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ReadTXT.ticket.setSeat(ReadTXT.temBook.getSeat());
+                ReadTXT.ticket.setFood(ReadTXT.temBook.getFood());
+                ReadTXT.ticket.setInsurance(ReadTXT.temBook.getInsurance());
                 ReadTXT.writeFile(ReadTXT.ticket);
                 AirportSystem.toPage(10);
             }

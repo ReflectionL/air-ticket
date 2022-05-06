@@ -1,4 +1,4 @@
-package Page;
+package 暂时用不上;
 
 import data.ReadTXT;
 import logic.AirportSystem;
@@ -51,13 +51,13 @@ public class windows3_2 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String bookID = jt1.getText().toString();
                 ReadTXT.queryBookid(bookID);
-                if(ReadTXT.ticket != null) {
+
+                if(ReadTXT.ticket.getID() != null) {
                     ReadTXT.tickets.add(ReadTXT.ticket);
                     AirportSystem.toPage(12);
-                    jt1.setText("");
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "The ticket is not exist.", "Warning", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "The ticket is not exist.", "Waring", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

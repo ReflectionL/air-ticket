@@ -1,4 +1,4 @@
-package Page;
+package 暂时用不上;
 
 import data.ReadTXT;
 import logic.AirportSystem;
@@ -94,11 +94,8 @@ public class windows7 extends JFrame implements Runnable, ActionListener {
                 if(jCheckBox1.isSelected()) {
                     AirportSystem.toPage(8);
                 }
-                else if(jCheckBox2.isSelected()) {
+                if(jCheckBox2.isSelected()) {
                     AirportSystem.toPage(9);
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Please select a method of payment.", "Warning", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

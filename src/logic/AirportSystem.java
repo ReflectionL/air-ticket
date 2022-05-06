@@ -12,10 +12,14 @@ import java.util.ArrayList;
  * @version: $
  */
 public class AirportSystem {
+    public static int totalTicket = 0;
     public static ArrayList<JFrame> frame = new ArrayList<JFrame>();
     public static windows2 win2 = new windows2();
     public static windows7 win7 = new windows7();
     public static windows12 win12 = new windows12();
+
+    private static windows6 wd6;
+
     public static void main(String[] args) {
         frame.add(new windows1());
         frame.add(new windows2());
@@ -68,5 +72,10 @@ public class AirportSystem {
     }
     public static void refreshPage() {
         frame.set(3, new windows4());
+        frame.set(10, new windows11());
+    }
+
+    public static void refreshPrice() {
+        frame.set(5, new windows6());
     }
 }

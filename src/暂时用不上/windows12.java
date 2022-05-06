@@ -1,4 +1,4 @@
-package Page;
+package 暂时用不上;
 
 import data.AirTicket;
 import data.ReadTXT;
@@ -8,7 +8,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,28 +27,17 @@ public class windows12 extends JFrame{
     }
 
     public windows12() {
-
         contentPane = new JPanel();
 
         contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
         this.setContentPane(contentPane);
         contentPane.setLayout(null);
-        JPanel jPanel1 = new JPanel();
-        jPanel1.setLayout(null);
-        jPanel1.setPreferredSize(new Dimension(800,2000));
-        JTextField textField = new JTextField();
+
         JLabel jLabel1 = new JLabel("Ticket information");
         jLabel1.setBounds(400,-40,800,200);
         jLabel1.setFont(new Font("微软雅黑", Font.BOLD, 50));
         this.add(jLabel1);
-        JScrollPane scrollPane1 = new JScrollPane(
-                ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER
 
-        );
-        scrollPane1.setViewportView(jPanel1);
-        scrollPane1.setBounds(5,100,1170,350);
-        scrollPane1.getVerticalScrollBar().setUnitIncrement(20);
         for (int i=0;i<ReadTXT.tickets.size();i++) {
             AirTicket ticket=ReadTXT.tickets.get(i);
 
@@ -61,13 +49,13 @@ public class windows12 extends JFrame{
 
                 JCheckBox jCheckBox1 = new JCheckBox("Ticket");
                 JCheckBox jCheckBox2 = new JCheckBox("Luggage");
-                jCheckBox1.setBounds(860, 90 + 140 * i, 150, 40);
+                jCheckBox1.setBounds(860, 190 + 140 * i, 150, 40);
                 jCheckBox1.setFont(new Font("微软雅黑", Font.BOLD, 25));
-                jCheckBox2.setBounds(1020, 90 + 140 * i, 150, 40);
+                jCheckBox2.setBounds(1020, 190 + 140 * i, 150, 40);
                 jCheckBox2.setFont(new Font("微软雅黑", Font.BOLD, 25));
 
-                jPanel1.add(jCheckBox1);
-                jPanel1.add(jCheckBox2);
+                this.add(jCheckBox1);
+                this.add(jCheckBox2);
 
                 jCheckBox1.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -81,7 +69,6 @@ public class windows12 extends JFrame{
                                 jLabel5.setVisible(false);
                         }
                         jLabel5.setText("There are " + ticketFlag + " tickets.");
-                        AirportSystem.totalTicket = ticketFlag + luggageFlag;
                     }
                 });
                 jCheckBox2.addActionListener(new ActionListener() {
@@ -96,15 +83,14 @@ public class windows12 extends JFrame{
                                 jLabel6.setVisible(false);
                         }
                         jLabel6.setText("There are " + luggageFlag + " luggage tickets.");
-                        AirportSystem.totalTicket = ticketFlag + luggageFlag;
                     }
                 });
             }
             SimpleDateFormat format = new SimpleDateFormat("HH:mm MM-dd");
             JButton jButton1 = new JButton("Detail information");
-            jButton1.setBounds(860, 50+140*i, 280, 40);
+            jButton1.setBounds(860, 140+140*i, 280, 40);
             jButton1.setFont(new Font("微软雅黑", Font.BOLD, 25));
-            jPanel1.add(jButton1);
+            this.add(jButton1);
             // set the header of the table
             String[] header = {"Flight No", "Origin", "Destination", "ETD", "TOA", "Seat"};
             // set the data of the table
@@ -134,9 +120,9 @@ public class windows12 extends JFrame{
             // key, crucial!
             jScrollPane.setViewportView(table);
             // set the position of the JScrollPane object
-            jScrollPane.setBounds(40, 35+140*i, 800, 80);
+            jScrollPane.setBounds(40, 140+140*i, 800, 80);
             // add the JScrollPane object to JPanel
-            jPanel1.add(jScrollPane);
+            add(jScrollPane);
             jButton1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     ReadTXT.ticket = ticket;
@@ -176,13 +162,7 @@ public class windows12 extends JFrame{
 
         jButton5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(AirportSystem.totalTicket == 0){
-                    JOptionPane.showMessageDialog(null, "You didn't choose ticket to print.", "Warning", JOptionPane.ERROR_MESSAGE);
-                }
-                else{
-                    AirportSystem.refreshPage();
-                    AirportSystem.toPage(11);
-                }
+                AirportSystem.toPage(11);
             }
         });
         jButton4.addActionListener(new ActionListener() {
@@ -190,7 +170,6 @@ public class windows12 extends JFrame{
                 AirportSystem.toPage(1);
             }
         });
-        this.add(scrollPane1);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setBounds(200, 200, 1200, 800);
         this.setLocationRelativeTo(null);

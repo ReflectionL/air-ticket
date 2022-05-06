@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class windows5 extends JFrame {
+    private boolean hasMeal = false;
+    private boolean hasInsurance = false;
     public static void main(String[] args){
         new windows5();
     }
@@ -131,47 +133,65 @@ public class windows5 extends JFrame {
         radioButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ReadTXT.temBook.setInsurancePrice(0);
+                ReadTXT.temBook.setInsurance(0);
                 jLabel7.setText("Price： $"+ ReadTXT.temBook.sumPrice());
+                hasMeal = true;
             }
         });
         radioButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ReadTXT.temBook.setInsurancePrice(20);
+                ReadTXT.temBook.setInsurance(1);
                 jLabel7.setText("Price： $"+ ReadTXT.temBook.sumPrice());
+                hasMeal = true;
             }
         });
         radioButton3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ReadTXT.temBook.setInsurancePrice(50);
+                ReadTXT.temBook.setInsurance(2);
                 jLabel7.setText("Price： $"+ ReadTXT.temBook.sumPrice());
+                hasMeal = true;
             }
         });
         radioButton4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ReadTXT.temBook.setFoodPrice(0);
+                ReadTXT.temBook.setFood("A");
                 jLabel7.setText("Price： $"+ ReadTXT.temBook.sumPrice());
+                hasInsurance = true;
             }
         });
         radioButton5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ReadTXT.temBook.setFoodPrice(58);
+                ReadTXT.temBook.setFood("B");
                 jLabel7.setText("Price： $"+ ReadTXT.temBook.sumPrice());
+                hasInsurance = true;
             }
         });
         radioButton6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ReadTXT.temBook.setFoodPrice(78);
+                ReadTXT.temBook.setFood("C");
                 jLabel7.setText("Price： $"+ ReadTXT.temBook.sumPrice());
+                hasInsurance = true;
             }
         });
         jButton4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                AirportSystem.refreshPrice();
                 AirportSystem.toPage(6);
             }
         });
         jButton5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                AirportSystem.toPage(7);
+                if(hasMeal && hasInsurance){
+                    AirportSystem.toPage(7);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please select your meal and insurance.", "Warning", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         jButton6.addActionListener(new ActionListener() {
