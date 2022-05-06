@@ -58,13 +58,13 @@ public class windows9 extends JFrame {
 
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ReadTXT.ticket.setSeat(ReadTXT.temBook.getSeat());
-                ReadTXT.writeFile(ReadTXT.ticket);
                 AirportSystem.toPage(7);
             }
         });
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                ReadTXT.ticket.setSeat(ReadTXT.temBook.getSeat());
+                ReadTXT.writeFile(ReadTXT.ticket);
                 AirportSystem.toPage(10);
             }
         });

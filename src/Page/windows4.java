@@ -46,6 +46,8 @@ public class windows4 extends JFrame{
             jButton1.setFont(new Font("微软雅黑", Font.BOLD, 25));
             jButton2.setBounds(900,600,250,70);
             jButton2.setFont(new Font("微软雅黑", Font.BOLD, 25));
+            jButton2.setVisible(false);
+
             ImageIcon icon3=new ImageIcon("src/picture/seat.jpg" );
             //添加JLabel 放置图片
             JLabel label1=new JLabel(icon3);
@@ -157,6 +159,7 @@ public class windows4 extends JFrame{
                 container.add(Jb);
             }
 
+            //second class
             for (Map.Entry<String,JRadioButton> map : buttonMap.entrySet()) {
                 JRadioButton Jb = map.getValue();
                 Jb.addActionListener(new ActionListener() {
@@ -174,6 +177,8 @@ public class windows4 extends JFrame{
                             Jb.setIcon(icon2);
                             ReadTXT.temBook.setSeat(Jb.getText());
                             ReadTXT.temBook.setSeatPrice(0);
+
+                            System.out.println(ReadTXT.temBook.getSeat());
                             jButton2.setVisible(true);
                             jLabel2.setText("You should pay extra : $0");
                         }
@@ -181,6 +186,7 @@ public class windows4 extends JFrame{
                 });
             }
 
+            //first class
             for (Map.Entry<String,JRadioButton> map : fbuttonMap.entrySet()) {
                 JRadioButton Jb = map.getValue();
                 Jb.addActionListener(new ActionListener() {
@@ -197,6 +203,8 @@ public class windows4 extends JFrame{
                         if(Jb.isSelected()){
                             Jb.setIcon(icon2);
                             ReadTXT.temBook.setSeat(Jb.getText());
+
+                            System.out.println(ReadTXT.temBook.getSeat());
                             jButton2.setVisible(true);
                             ReadTXT.temBook.setSeatPrice(300);
                             jLabel2.setText("You should pay extra : $300");
