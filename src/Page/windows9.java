@@ -1,6 +1,6 @@
 package Page;
 
-import data.ReadTXT;
+import data.interfence.ReadTXT;
 import logic.AirportSystem;
 
 import javax.swing.*;
@@ -66,6 +66,8 @@ public class windows9 extends JFrame {
                 ReadTXT.ticket.setSeat(ReadTXT.temBook.getSeat());
                 ReadTXT.ticket.setFood(ReadTXT.temBook.getFood());
                 ReadTXT.ticket.setInsurance(ReadTXT.temBook.getInsurance());
+                if(ReadTXT.ticket.getSeatrank() == 1 && ReadTXT.temBook.getSeatrank() == 0)
+                    ReadTXT.ticket.setSeatrank(ReadTXT.temBook.getSeatrank());
                 ReadTXT.writeFile(ReadTXT.ticket);
                 AirportSystem.toPage(10);
             }

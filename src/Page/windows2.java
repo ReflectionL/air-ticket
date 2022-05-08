@@ -1,6 +1,6 @@
 package Page;
 
-import data.ReadTXT;
+import data.interfence.ReadTXT;
 import logic.AirportSystem;
 
 import javax.swing.*;
@@ -27,7 +27,10 @@ public class windows2 extends JFrame {
             JLabel jl3 = new JLabel("Time of arrival: " + format.format(ReadTXT.ticket.getEndtime()));
             JLabel jl4 = new JLabel("Place of origin - Destination: " + ReadTXT.ticket.getBeginplace() + " - " + ReadTXT.ticket.getEndplace());
             JLabel jl5 = new JLabel("Seat：" + ReadTXT.ticket.getSeat());
-            JLabel jl6 = new JLabel("Meal：" + ReadTXT.ticket.getFood());
+            JLabel jl6 = new JLabel("Meal：" + ReadTXT.ticket.getRealFood());
+            JLabel jl7 = new JLabel("Seat Rank：" + ReadTXT.ticket.getRealSeatrank());
+            JLabel jl8 = new JLabel("Insurance：" + ReadTXT.ticket.getRealInsurance());
+            JLabel jl9 = new JLabel("Luggage：" + ReadTXT.ticket.getRealLuggage());
 
             jl1.setBounds(450,70,480,50);
             jl1.setFont(new Font("微软雅黑", Font.BOLD, 30));
@@ -37,20 +40,31 @@ public class windows2 extends JFrame {
             jl3.setFont(new Font("微软雅黑", Font.BOLD, 26));
             jl4.setBounds(200,230,800,50);
             jl4.setFont(new Font("微软雅黑", Font.BOLD, 26));
-            jl5.setBounds(200,270,800,50);
+            jl5.setBounds(200,310,800,50);
             jl5.setFont(new Font("微软雅黑", Font.BOLD, 26));
-            jl6.setBounds(200,310,800,50);
+            jl6.setBounds(200,350,800,50);
             jl6.setFont(new Font("微软雅黑", Font.BOLD, 26));
+            jl7.setBounds(200,270,800,50);
+            jl7.setFont(new Font("微软雅黑", Font.BOLD, 26));
+            jl8.setBounds(200,390,800,50);
+            jl8.setFont(new Font("微软雅黑", Font.BOLD, 26));
+            jl9.setBounds(200,430,800,50);
+            jl9.setFont(new Font("微软雅黑", Font.BOLD, 26));
+
             jb1.setBounds(380,600,300,60);
             jb1.setFont(new Font("微软雅黑", Font.BOLD, 26));
             jb2.setBounds(710,600,160,60);
             jb2.setFont(new Font("微软雅黑", Font.BOLD, 26));
+
             container1.add(jl1);
             container1.add(jl2);
             container1.add(jl3);
             container1.add(jl4);
             container1.add(jl5);
             container1.add(jl6);
+            container1.add(jl7);
+            container1.add(jl8);
+            container1.add(jl9);
 
             container1.add(jb2);
 

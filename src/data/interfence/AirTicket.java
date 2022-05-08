@@ -1,4 +1,4 @@
-package data;
+package data.interfence;
 
 import java.util.Date;
 public class AirTicket {
@@ -209,5 +209,45 @@ public class AirTicket {
 	public void setFlightno(String flightno) {
 		this.flightno = flightno;
 	}
-	
+
+	public String getRealFood() {
+		if (food == null)
+			return "xixi";
+
+		else if (food.equals("A"))
+			return "No Meal.";
+
+		else if (food.equals("B"))
+			return "Standard Plane Meal(Pasta + Hamburger).";
+
+		else
+			return "Luxurious Plane Meal(Pasta + Hamburger + Coke).";
+	}
+
+	public String getRealInsurance() {
+		if (insurance == 0)
+			return "No Insurance.";
+
+		else if (insurance == 1)
+			return "Standard Insurance";
+
+		else
+			return "Supreme Insurance.";
+	}
+
+	public String getRealSeatrank() {
+		if (seatrank == 0)
+			return "First Class";
+
+		else
+			return "Second Class";
+	}
+
+	public String getRealLuggage() {
+		if (luggage == 0)
+			return "No";
+
+		else
+			return "Yes";
+	}
 }

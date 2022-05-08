@@ -1,7 +1,7 @@
 package Page;
 
-import data.ReadTXT;
-import data.TemBook;
+import data.interfence.ReadTXT;
+import data.interfence.TemBook;
 import logic.AirportSystem;
 
 import javax.swing.*;
@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -177,6 +176,7 @@ public class windows4 extends JFrame{
                             Jb.setIcon(icon2);
                             ReadTXT.temBook.setSeat(Jb.getText());
                             ReadTXT.temBook.setSeatPrice(0);
+                            ReadTXT.temBook.setSeatrank(1);
 
                             System.out.println(ReadTXT.temBook.getSeat());
                             jButton2.setVisible(true);
@@ -206,8 +206,19 @@ public class windows4 extends JFrame{
 
                             System.out.println(ReadTXT.temBook.getSeat());
                             jButton2.setVisible(true);
-                            ReadTXT.temBook.setSeatPrice(300);
-                            jLabel2.setText("You should pay extra : $300");
+
+                            if(ReadTXT.ticket.getSeatrank() == 1) {
+                                JOptionPane.showMessageDialog(null, "The ticket you booked is in second class. And you are choosing seat in first class. This can lead to additional costs.");
+                                ReadTXT.temBook.setSeatPrice(300);
+                                ReadTXT.temBook.setSeatrank(0);
+                                jLabel2.setText("You should pay extra : $300");
+                            }
+                            else {
+                                ReadTXT.temBook.setSeatPrice(0);
+                                ReadTXT.temBook.setSeatrank(0);
+                                jLabel2.setText("You should pay extra : $0");
+                            }
+
                         }
                     }
                 });

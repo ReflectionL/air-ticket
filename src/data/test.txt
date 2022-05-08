@@ -1,1 +1,42 @@
-[{"beginplace":"Beijin","begintime":1648378377829,"boardinggate":"04","bookID":"AS1234560","endplace":"Shanghai","endtime":1648378377829,"flightno":"MAHANG 1212","food":"C","iD":"42152123202415211","insurance":2,"luggage":1,"name":"PengLi","seat":"36A","seatrank":1},{"beginplace":"Beijin","begintime":1648378377829,"boardinggate":"04","bookID":"AS1234561","endplace":"Shanghai","endtime":1648378377829,"flightno":"MAHANG 1212","food":"C","iD":"42152123202415211","insurance":0,"luggage":1,"name":"PengLi","seat":"37B","seatrank":1}]
+[
+	{
+		"beginplace":"Beijin",
+		"begintime":1648378377829,
+		"boardinggate":"04",
+		"bookID":"AS1234560",
+		"endplace":"Shanghai",
+		"endtime":1648378377829,
+		"flightno":"MAHANG 1212",
+		"food":"A",
+		"iD":"42152123202415211",
+		"insurance":1,
+		"luggage":1,
+		"name":"PengLi",
+		"realFood":"No Meal.",
+		"realInsurance":"Standard Insurance",
+		"realLuggage":"Yes",
+		"realSeatrank":"First Class",
+		"seat":"36A",
+		"seatrank":0
+	},
+	{
+		"beginplace":"Beijin",
+		"begintime":1648378377829,
+		"boardinggate":"04",
+		"bookID":"AS1234561",
+		"endplace":"Shanghai",
+		"endtime":1648378377829,
+		"flightno":"MAHANG 1212",
+		"food":"C",
+		"iD":"42152123202415211",
+		"insurance":0,
+		"luggage":1,
+		"name":"PengLi",
+		"realFood":"Luxurious Plane Meal(Pasta + Hamburger + Coke).",
+		"realInsurance":"No Insurance.",
+		"realLuggage":"Yes",
+		"realSeatrank":"Second Class",
+		"seat":"37B",
+		"seatrank":1
+	}
+]

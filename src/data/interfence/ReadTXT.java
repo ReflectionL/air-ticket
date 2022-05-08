@@ -1,4 +1,4 @@
-package data;
+package data.interfence;
 
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -9,6 +9,11 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import data.interfence.AirTicket;
+import data.interfence.Bank;
+import data.interfence.Price;
+import data.interfence.TemBook;
 import logic.AirportSystem;
 
 public class ReadTXT {
@@ -16,7 +21,10 @@ public class ReadTXT {
     public static AirTicket ticket = new AirTicket();
     public static TemBook temBook = new TemBook();
     public static List<AirTicket> tickets = new ArrayList<AirTicket>();
-    static List<String> listseat=new ArrayList<String>();
+    public static List<String> listseat=new ArrayList<String>();
+
+    public static Price price = new Price();
+    public static List<Bank> listbank = new ArrayList<Bank>();
     public static void queryBookid(String bookid){
         String json=readFile();
         listAir =JSON.parseArray(json,AirTicket.class);
@@ -99,11 +107,12 @@ public class ReadTXT {
                         break;
                     }
                }
-               String jString=JSON.toJSONString(listAir);
+
+                String jString=JSON.toJSONString(listAir, SerializerFeature.PrettyFormat,SerializerFeature.DisableCircularReferenceDetect);
                 bw.write(jString);
                 bw.flush();
-                bw.close();
                 out.close();
+                bw.close();
            }
    
        } catch (FileNotFoundException e) {
@@ -112,5 +121,65 @@ public class ReadTXT {
          e.printStackTrace();
         }
 
+    }
+
+    public static void getAllprice(){
+        String json=readpriceFile();
+        price=JSON.parseObject(json,Price.class);
+        System.out.println(price.getInsuranceA());
+
+    }
+
+    public static String readpriceFile(){
+        try {
+            try (FileInputStream fis = new FileInputStream("/data/price.txt")) {
+                StringBuffer sb=new StringBuffer();
+                int len=0;
+                while(true){
+                    byte[] b=new byte[1024];
+                    len=fis.read(b);
+                    if(len<0){
+                        break;
+                    }
+                    sb.append(new String(b,0,len));
+                }
+                fis.close();
+                return sb.toString();
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static void querybank(){
+        String json=readBankFile();
+        listbank=JSON.parseArray(json,Bank.class);
+    }
+    public static String readBankFile(){
+        try {
+            try (FileInputStream fis = new FileInputStream("/data/bank.txt")) {
+                StringBuffer sb=new StringBuffer();
+                int len=0;
+                while(true){
+                    byte[] b=new byte[1024];
+                    len=fis.read(b);
+                    if(len<0){
+                        break;
+                    }
+                    sb.append(new String(b,0,len));
+                }
+                fis.close();
+                return sb.toString();
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package data;
+package data.interfence;
 
 /**
  * @author ：mmzs
@@ -11,6 +11,16 @@ public class TemBook {
     private String seat;
     private String food;
     private int insurance;
+    private int seatrank;
+
+    public int getSeatrank() {
+        return seatrank;
+    }
+
+    public void setSeatrank(int seatrank) {
+        this.seatrank = seatrank;
+    }
+
     private float seatPrice = 0;
     private float foodPrice = 0;
     private float insurancePrice = 0;

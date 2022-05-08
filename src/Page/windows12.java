@@ -1,14 +1,13 @@
 package Page;
 
-import data.AirTicket;
-import data.ReadTXT;
+import data.interfence.AirTicket;
+import data.interfence.ReadTXT;
 import logic.AirportSystem;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,7 +1,6 @@
 package Page;
 
-import data.ReadTXT;
-import data.TemBook;
+import data.interfence.ReadTXT;
 import logic.AirportSystem;
 
 import javax.swing.*;
