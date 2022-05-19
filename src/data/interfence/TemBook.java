@@ -79,25 +79,25 @@ public class TemBook {
 
     public String getRealFood() {
         if (food == null)
-            return "xixi";
+            return "";
 
         else if (food.equals("A"))
-            return "No Meal.";
+            return "";
 
         else if (food.equals("B"))
-            return "Standard Plane Meal(Pasta + Hamburger).";
+            return "Standard Plane Meal";
 
         else
-            return "Luxurious Plane Meal(Pasta + Hamburger + Coke).";
+            return "Luxurious Plane Meal";
     }
     public String getRealInsurance() {
         if (insurance == 0)
-            return "No Insurance.";
+            return "No";
 
         else if (insurance == 1)
-            return "Standard Insurance";
+            return "Yes";
 
         else
-            return "Supreme Insurance.";
+            return "No";
     }
 }

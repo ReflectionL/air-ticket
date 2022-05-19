@@ -11,13 +11,12 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class windows12 extends JFrame{
     private int ticketFlag = 0;
     private int luggageFlag = 0;
-    private JLabel lblNewLabel3 = new JLabel("------------------------------------------------------------------------------------");
-    private JLabel jLabel4 = new JLabel("The ticket you want to print：");
     private JLabel jLabel5 = new JLabel();
     private JLabel jLabel6 = new JLabel();
     private JPanel contentPane;
@@ -47,58 +46,11 @@ public class windows12 extends JFrame{
 
         );
         scrollPane1.setViewportView(jPanel1);
-        scrollPane1.setBounds(5,100,1170,350);
+        scrollPane1.setBounds(5,100,1170,550);
         scrollPane1.getVerticalScrollBar().setUnitIncrement(20);
         for (int i=0;i<ReadTXT.tickets.size();i++) {
             AirTicket ticket=ReadTXT.tickets.get(i);
-
-            if (!ticket.getSeat().equals("")) {
-//                JLabel jLabel2 = new JLabel("Print");
-//                jLabel2.setBounds(390, 57 + 70 * i, 100, 100);
-//                jLabel2.setFont(new Font("微软雅黑", Font.BOLD, 15));
-//                this.add(jLabel2);
-
-                JCheckBox jCheckBox1 = new JCheckBox("Ticket");
-                JCheckBox jCheckBox2 = new JCheckBox("Luggage");
-                jCheckBox1.setBounds(860, 90 + 140 * i, 150, 40);
-                jCheckBox1.setFont(new Font("微软雅黑", Font.BOLD, 25));
-                jCheckBox2.setBounds(1020, 90 + 140 * i, 150, 40);
-                jCheckBox2.setFont(new Font("微软雅黑", Font.BOLD, 25));
-
-                jPanel1.add(jCheckBox1);
-                jPanel1.add(jCheckBox2);
-
-                jCheckBox1.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        if(jCheckBox1.isSelected()) {
-                            ticketFlag++;
-                            jLabel5.setVisible(true);
-                        }
-                        else {
-                            ticketFlag--;
-                            if(ticketFlag == 0)
-                                jLabel5.setVisible(false);
-                        }
-                        jLabel5.setText("There are " + ticketFlag + " tickets.");
-                        AirportSystem.totalTicket = ticketFlag + luggageFlag;
-                    }
-                });
-                jCheckBox2.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        if(jCheckBox2.isSelected()) {
-                            luggageFlag++;
-                            jLabel6.setVisible(true);
-                        }
-                        else {
-                            luggageFlag--;
-                            if(luggageFlag == 0)
-                                jLabel6.setVisible(false);
-                        }
-                        jLabel6.setText("There are " + luggageFlag + " luggage tickets.");
-                        AirportSystem.totalTicket = ticketFlag + luggageFlag;
-                    }
-                });
-            }
+            SimpleDateFormat format0= new SimpleDateFormat("yyyy-MM-dd HH:mm");
             SimpleDateFormat format = new SimpleDateFormat("HH:mm MM-dd");
             JButton jButton1 = new JButton("Detail information");
             jButton1.setBounds(860, 50+140*i, 280, 40);
@@ -107,7 +59,12 @@ public class windows12 extends JFrame{
             // set the header of the table
             String[] header = {"Flight No", "Origin", "Destination", "ETD", "TOA", "Seat"};
             // set the data of the table
-            Object[][] data = {{ticket.getFlightno(), ticket.getBeginplace(), ticket.getEndplace(), format.format(ticket.getBegintime()), format.format(ticket.getEndtime()), ticket.getSeat()}};
+            Object[][] data = new Object[0][];
+            try {
+                data = new Object[][]{{ticket.getFlightno(), ticket.getBeginplace(), ticket.getEndplace(), format.format(format0.parse(ticket.getBegintime())), format.format(format0.parse(ticket.getEndtime())), ticket.getSeat()}};
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
             // create a table model
             DefaultTableModel model = new DefaultTableModel(data, header);
@@ -145,14 +102,6 @@ public class windows12 extends JFrame{
             });
         }
 
-        lblNewLabel3.setBounds(0,360,10000,200);
-        lblNewLabel3.setFont(new Font("微软雅黑", Font.BOLD, 40));
-        this.add(lblNewLabel3);
-
-        jLabel4.setBounds(40,400,500,200);
-        jLabel4.setFont(new Font("微软雅黑", Font.BOLD, 30));
-        this.add(jLabel4);
-
         jLabel5.setBounds(350,480,500,200);
         jLabel5.setFont(new Font("微软雅黑", Font.BOLD, 30));
         jLabel5.setVisible(false);
@@ -163,27 +112,11 @@ public class windows12 extends JFrame{
         jLabel5.setVisible(false);
         this.add(jLabel6);
 
-
-        JButton jButton5 = new JButton("Print");
-        jButton5.setBounds(700,650,160,70);
         JButton jButton4 = new JButton("Exit");
         jButton4.setBounds(900,650,160,70);
         jButton4.setFont(new Font("微软雅黑", Font.BOLD, 25));
-        jButton5.setFont(new Font("微软雅黑", Font.BOLD, 25));
-        this.add(jButton5);
-        this.add(jButton4);
 
-        jButton5.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if(AirportSystem.totalTicket == 0){
-                    JOptionPane.showMessageDialog(null, "You didn't choose ticket to print.", "Warning", JOptionPane.ERROR_MESSAGE);
-                }
-                else{
-                    AirportSystem.refreshPage();
-                    AirportSystem.toPage(11);
-                }
-            }
-        });
+        this.add(jButton4);
         jButton4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 AirportSystem.toPage(1);
@@ -193,7 +126,6 @@ public class windows12 extends JFrame{
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setBounds(200, 200, 1200, 800);
         this.setLocationRelativeTo(null);
-//        this.setVisible(true);
         this.setResizable(false);
     }
 

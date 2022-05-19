@@ -34,6 +34,8 @@ public class AirportSystem {
         frame.add(new windows11());
         frame.add(new windows12());
         frame.add(new windows3_2());
+        frame.add(new windows13());
+        frame.add(new window14());
         toPage(1);
     }
     public static void toPage(int num) {
@@ -73,6 +75,7 @@ public class AirportSystem {
     public static void refreshPage() {
         frame.set(3, new windows4());
         frame.set(10, new windows11());
+        frame.set(14, new window14());
     }
 
     public static void refreshPrice() {

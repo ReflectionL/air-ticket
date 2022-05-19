@@ -15,8 +15,6 @@ public class windows10 extends JFrame implements Runnable, ActionListener{
     private int second;
     private JLabel timeLabel;
 
-
-
     public windows10() {
         int hour = 0;
         int minute = 0;
@@ -32,7 +30,7 @@ public class windows10 extends JFrame implements Runnable, ActionListener{
         jPanel1.setLayout(null);
         jPanel1.setBorder(BorderFactory.createLoweredBevelBorder());
 
-        JButton jButton1 = new JButton("Print");
+        JButton jButton1 = new JButton("Check in");
         jButton1.setBounds(510,500,160,60);
         jButton1.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 
@@ -43,8 +41,6 @@ public class windows10 extends JFrame implements Runnable, ActionListener{
         this.add(jButton1);
         jPanel1.add(timeLabel);
 
-
-//        this.pack();
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Toolkit tool = Toolkit.getDefaultToolkit();
@@ -53,10 +49,9 @@ public class windows10 extends JFrame implements Runnable, ActionListener{
         this.setLocation((int)((width-this.getWidth())/2)
                 ,(int)((height-this.getHeight())/2));
 //        this.setVisible(true);
-
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                AirportSystem.toPage(12);
+                AirportSystem.toPage(14);
             }
         });
     }

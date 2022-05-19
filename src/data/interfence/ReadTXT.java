@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -28,6 +30,22 @@ public class ReadTXT {
     public static void queryBookid(String bookid){
         String json=readFile();
         listAir =JSON.parseArray(json,AirTicket.class);
+        for(int i = 0; i< listAir.size(); i++)
+        {
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                Date date=format.parse(listAir.get(i).getBegintime());
+                long time1=86400000l;
+                if(date.getTime()+time1 < System.currentTimeMillis())
+                {
+
+                    listAir.remove(i--);
+                }
+            } catch (Exception e) {
+                //TODO: handle exception
+            }
+
+        }
         if (tickets.size()!=0)
         {
             tickets.clear();
@@ -46,6 +64,22 @@ public class ReadTXT {
     public static void queryID(String ID){
         String json=readFile();
         listAir =JSON.parseArray(json,AirTicket.class);
+        for(int i = 0; i< listAir.size(); i++)
+        {
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                Date date=format.parse(listAir.get(i).getBegintime());
+                long time1=86400000l;
+                if(date.getTime()+time1 < System.currentTimeMillis())
+                {
+
+                    listAir.remove(i--);
+                }
+            } catch (Exception e) {
+                //TODO: handle exception
+            }
+
+        }
         if (tickets.size()!=0)
         {
             tickets.clear();
@@ -132,7 +166,7 @@ public class ReadTXT {
 
     public static String readpriceFile(){
         try {
-            try (FileInputStream fis = new FileInputStream("/data/price.txt")) {
+            try (FileInputStream fis = new FileInputStream("src/data/price.txt")) {
                 StringBuffer sb=new StringBuffer();
                 int len=0;
                 while(true){
@@ -160,7 +194,7 @@ public class ReadTXT {
     }
     public static String readBankFile(){
         try {
-            try (FileInputStream fis = new FileInputStream("/data/bank.txt")) {
+            try (FileInputStream fis = new FileInputStream("src/data/bank.txt")) {
                 StringBuffer sb=new StringBuffer();
                 int len=0;
                 while(true){

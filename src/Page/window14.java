@@ -4,32 +4,78 @@ import data.interfence.ReadTXT;
 import logic.AirportSystem;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 
-public class windows2 extends JFrame {
+public class window14 extends JFrame {
     public static void main(String[] args){
-        windows2 windows2 = new windows2();
+        window14 window14 = new window14();
     }
-    public windows2(){
+    public window14(){
         Container container1 = this.getContentPane();
         container1.setLayout(null);
+        JPanel jPanel1 = new JPanel();
+        jPanel1.setLayout(new FlowLayout());
+        jPanel1.setPreferredSize(new Dimension(800,2000));
+        JScrollPane scrollPane = new JScrollPane(
+                ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER
+
+        );
+        scrollPane.setViewportView(jPanel1);
+        scrollPane.setBounds(5,50,1170,600);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+
         URL resource = windows1.class.getResource("/picture/detail.png ");
         Icon icon = new ImageIcon(resource);
+        URL resource1 = windows1.class.getResource("/picture/tag.jpg ");
+        Icon icon1 = new ImageIcon(resource1);
+        URL resource2 = windows1.class.getResource("/picture/Ticket.jpg ");
+        Icon icon2 = new ImageIcon(resource2);
         SimpleDateFormat format1= new SimpleDateFormat("yyyy-MM-dd HH:mm");
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat format3 = new SimpleDateFormat("HH:mm");
+
         try {
             JLabel jl0 = new JLabel();
             jl0.setIcon(icon);
-            jl0.setBounds(0,00, icon.getIconWidth(), icon.getIconHeight());
+            jl0.setBounds(0,0, icon.getIconWidth(), icon.getIconHeight());
+            JLabel jtag=new JLabel();
+            jtag.setIcon(icon1);
+            jtag.setBounds(50,850, icon1.getIconWidth(), icon1.getIconHeight());
+            JLabel jtagname=new JLabel(ReadTXT.ticket.getName());
+            JLabel jtagphone=new JLabel(ReadTXT.ticket.getPhone());
+            JLabel jtagnumber=new JLabel(String.valueOf(ReadTXT.ticket.getCarryluggage()));
+            TitledBorder border=BorderFactory.createTitledBorder("Tag");
+            border.setTitleFont(new Font("微软雅黑", Font.BOLD, 30));
+            jtag.setBorder(border);
+            jtagname.setBounds(200,60,400,100);
+            jtagphone.setBounds(200,120,400,100);
+            jtagnumber.setBounds(200,180,400,100);
+            jtagname.setFont(new Font("微软雅黑", Font.BOLD, 25));
+            jtagphone.setFont(new Font("微软雅黑", Font.BOLD, 25));
+            jtagnumber.setFont(new Font("微软雅黑", Font.BOLD, 25));
+            jtag.add(jtagname);
+            jtag.add(jtagphone);
+            jtag.add(jtagnumber);
 
-            JButton jb1 = new JButton("Choose the seat");
-            JButton jb2 = new JButton("Return");
-            JLabel jl1 = new JLabel("Ticket information");
+            JLabel jchecktag=new JLabel();
+            JLabel jchecktagid=new JLabel(ReadTXT.ticket.getCarryid());
+            JLabel jchecktagnumber=new JLabel(String.valueOf(ReadTXT.ticket.getCheckluggage()));
+            jchecktag.setIcon(icon2);
+            jchecktag.setBounds(50,1200,icon2.getIconWidth(), icon2.getIconHeight());
+            jchecktagid.setBounds(360,190,400,100);
+            jchecktagnumber.setBounds(360,300,400,100);
+            jchecktagid.setFont(new Font("微软雅黑", Font.BOLD, 30));
+            jchecktagnumber.setFont(new Font("微软雅黑", Font.BOLD, 30));
+            jchecktag.add(jchecktagid);
+            jchecktag.add(jchecktagnumber);
+            JButton jb1 = new JButton("Print");
             JLabel jl2 = new JLabel(ReadTXT.ticket.getFlightno());
             JLabel jl3 = new JLabel(format2.format(format1.parse(ReadTXT.ticket.getBegintime()))+" "+format3.format(format1.parse(ReadTXT.ticket.getBegintime()))+"-"+format3.format(format1.parse(ReadTXT.ticket.getEndtime())));
             JLabel jl4 = new JLabel(ReadTXT.ticket.getBeginplace());
@@ -39,12 +85,10 @@ public class windows2 extends JFrame {
             JLabel jl8 = new JLabel(ReadTXT.ticket.getEndplace());
             JLabel jl9 = new JLabel(ReadTXT.ticket.getSeat()+"   "+ReadTXT.ticket.getRealSeatrank());
             JLabel jl10 = new JLabel(ReadTXT.ticket.getEndplace());
-            JLabel jl11 = new JLabel("Meal: "+ReadTXT.ticket.getRealFood());
+            JLabel jl11 = new JLabel("Meal:combo "+ReadTXT.ticket.getFood());
             JLabel jl12 = new JLabel("Insurance: "+ReadTXT.ticket.getRealInsurance());
             JLabel jl13 = new JLabel("check-in luggage id: "+ReadTXT.ticket.getCarryid());
             JLabel jl14 = new JLabel("carry-on luggage num: "+ReadTXT.ticket.getCarryluggage());
-            jl1.setBounds(450,70,480,50);
-            jl1.setFont(new Font("微软雅黑", Font.BOLD, 30));
             jl2.setBounds(250,410,800,50);
             jl2.setFont(new Font("微软雅黑", Font.BOLD, 15));
             jl3.setBounds(250,430,800,50);
@@ -74,47 +118,43 @@ public class windows2 extends JFrame {
 
             jb1.setBounds(680,700,300,60);
             jb1.setFont(new Font("微软雅黑", Font.BOLD, 26));
-            jb2.setBounds(1000,700,160,60);
-            jb2.setFont(new Font("微软雅黑", Font.BOLD, 26));
-//
-            container1.add(jl1);
-            container1.add(jl2);
-            container1.add(jl3);
-            container1.add(jl4);
-            container1.add(jl5);
-            container1.add(jl6);
-            container1.add(jl7);
-            container1.add(jl8);
-            container1.add(jl9);
-            container1.add(jl10);
-            container1.add(jl11);
-            container1.add(jl12);
-            container1.add(jl13);
-            container1.add(jl14);
-            container1.add(jb2);
-            container1.add(jl0,new Integer(Integer.MIN_VALUE));
 
-            if(ReadTXT.ticket.getSeat().equals("")) {
-                container1.add(jb1);
+            jl0.add(jl2);
+            jl0.add(jl3);
+            jl0.add(jl4);
+            jl0.add(jl5);
+            jl0.add(jl6);
+            jl0.add(jl7);
+            jl0.add(jl8);
+            jl0.add(jl9);
+            jl0.add(jl10);
+            jl0.add(jl11);
+            jl0.add(jl12);
+            jl0.add(jl13);
+            jl0.add(jl14);
+            jPanel1.add(jl0);
+            if (ReadTXT.ticket.getCarryluggage()!=0) {
+                jPanel1.add(jtag);
             }
+            if (ReadTXT.ticket.getCheckluggage()!=0) {
+                jPanel1.add(jchecktag);
+            }
+
+            container1.add(scrollPane);
+            container1.add(jb1);
 
             jb1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    AirportSystem.toPage(4);
+                    AirportSystem.toPage(10);
                 }
             });
 
-            jb2.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    AirportSystem.toPage(12);
-                }
-            });
         }
         catch (Exception e) {
         }
 
-
         //this.setVisible(true);
+
         this.setSize(1200,800);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);

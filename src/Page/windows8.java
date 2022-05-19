@@ -64,8 +64,9 @@ public class windows8 extends JFrame{
                 ReadTXT.ticket.setInsurance(ReadTXT.temBook.getInsurance());
                 if(ReadTXT.ticket.getSeatrank() == 1 && ReadTXT.temBook.getSeatrank() == 0)
                     ReadTXT.ticket.setSeatrank(ReadTXT.temBook.getSeatrank());
-                ReadTXT.writeFile(ReadTXT.ticket);
-                AirportSystem.toPage(10);
+//                ReadTXT.writeFile(ReadTXT.ticket);
+                AirportSystem.refreshPage();
+                AirportSystem.toPage(15);
             }
         });
         //添加panel，设置大小，可视

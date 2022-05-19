@@ -5,7 +5,6 @@ public class Price {
 	private int mealA;
 	private int mealB;
 	private int insuranceA;
-    private int insuranceB;
     public int getSeatprice() {
         return seatprice;
     }
@@ -29,12 +28,6 @@ public class Price {
     }
     public void setInsuranceA(int insuranceA) {
         this.insuranceA = insuranceA;
-    }
-    public int getInsuranceB() {
-        return insuranceB;
-    }
-    public void setInsuranceB(int insuranceB) {
-        this.insuranceB = insuranceB;
     }
     
 }

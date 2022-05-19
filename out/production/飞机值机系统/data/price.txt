@@ -1,1 +1,1 @@
-{"seatprice":"100","mealA":"20","mealB":"30","insuranceA":"40","insuranceB":"60"}
+{"seatprice":"100","mealA":"20","mealB":"30","insuranceA":"40"}
