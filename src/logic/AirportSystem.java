@@ -12,73 +12,49 @@ import java.util.ArrayList;
  * @version: $
  */
 public class AirportSystem {
-    public static int totalTicket = 0;
-    public static ArrayList<JFrame> frame = new ArrayList<JFrame>();
-    public static windows2 win2 = new windows2();
-    public static windows7 win7 = new windows7();
-    public static windows12 win12 = new windows12();
-
-    private static windows6 wd6;
+    private static ArrayList<JFrame> frame = new ArrayList<JFrame>();
 
     public static void main(String[] args) {
-        frame.add(new windows1());
-        frame.add(new windows2());
-        frame.add(new windows3_1());
-        frame.add(new windows4());
-        frame.add(new windows5());
-        frame.add(new windows6());
-        frame.add(new windows7());
-        frame.add(new windows8());
-        frame.add(new windows9());
-        frame.add(new windows10());
-        frame.add(new windows11());
-        frame.add(new windows12());
-        frame.add(new windows3_2());
-        frame.add(new windows13());
-        frame.add(new window14());
+        frame.add(new Welcome());
+        frame.add(new Information());
+        frame.add(new CheckByID());
+        frame.add(new SelectSeat());
+        frame.add(new OtherService());
+        frame.add(new Detail());
+        frame.add(new SelectPay());
+        frame.add(new PayWechat());
+        frame.add(new PayCard());
+        frame.add(new PrintSuc());
+        frame.add(new Contactus());
+        frame.add(new MainPage());
+        frame.add(new CheckByBooking());
+        frame.add(new CheckIn());
+        frame.add(new PrintPreview());
         toPage(1);
     }
+
     public static void toPage(int num) {
-        num--;
-        for(int i = 0; i < frame.size(); i++) {
-            if(i != num) {
-                if(i == 11){
-                    win12.setVisible(false);
-                }
-                else if(i == 1){
-                    win2.setVisible(false);
-                }
-                else if(i == 6){
-                    win7.setVisible(false);
-                }
-                frame.get(i).setVisible(false);
-            }
-            else {
-                if(num == 11){
-                    win12 = new windows12();
-                    win12.setVisible(true);
-                }
-                else if(num == 1){
-                    win2 = new windows2();
-                    win2.setVisible(true);
-                }
-                else if(i == 6){
-                    win7 = new windows7();
-                    win7.setVisible(true);
-                }
-                else{
-                    frame.get(i).setVisible(true);
-                }
-            }
-        }
-    }
-    public static void refreshPage() {
-        frame.set(3, new windows4());
-        frame.set(10, new windows11());
-        frame.set(14, new window14());
+        for(int i = 0; i < frame.size(); i++) frame.get(i).setVisible(i == (num-1));
     }
 
-    public static void refreshPrice() {
-        frame.set(5, new windows6());
+    public static void refreshtoPage(int num){
+        switch(num-1) {
+            case 0: frame.set(0, new Welcome());break;
+            case 1: frame.set(1, new Information());break;
+            case 2: frame.set(2, new CheckByID());break;
+            case 3: frame.set(3, new SelectSeat());break;
+            case 4: frame.set(4, new OtherService());break;
+            case 5: frame.set(5, new Detail());break;
+            case 6: frame.set(6, new SelectPay());break;
+            case 7: frame.set(7, new PayWechat());break;
+            case 8: frame.set(8, new PayCard());break;
+            case 9: frame.set(9, new PrintSuc());break;
+            case 10: frame.set(10, new Contactus());break;
+            case 11: frame.set(11, new MainPage());break;
+            case 12: frame.set(12, new CheckByBooking());break;
+            case 13: frame.set(13, new CheckIn());break;
+            case 14: frame.set(14, new PrintPreview());break;
+        }
+        toPage(num);
     }
 }
